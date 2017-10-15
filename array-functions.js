@@ -52,6 +52,26 @@ var filterResult = filter(filterArray, function(val) {
 console.log(filterResult);
 
 
+// Own iteration of some()
+function some(array, callback) {
+	var newArr = [];
+	for(var i = 0; i < array.length; i++) {
+		if(callback(array[i],i,array)) {
+			return true;
+		}
+	}
+		return false;
+}
+
+// test some() function
+var someArray = [1,2,3];
+var someResult = some(someArray, function(val) {
+	return val  > 4;
+});
+
+console.log(someResult);
+
+
 
 
 
