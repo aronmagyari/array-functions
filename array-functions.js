@@ -54,7 +54,6 @@ console.log(filterResult);
 
 // Own iteration of some()
 function some(array, callback) {
-	var newArr = [];
 	for(var i = 0; i < array.length; i++) {
 		if(callback(array[i],i,array)) {
 			return true;
@@ -70,6 +69,25 @@ var someResult = some(someArray, function(val) {
 });
 
 console.log(someResult);
+
+// Own iteration of every()
+function every(array, callback) {
+	for(var i = 0; i < array.length; i++) {
+		if(!callback(array[i],i,array)) {
+			return false;
+		}
+	}
+	return true;
+}
+
+
+// test every() function
+var everyArray = [1,2,3];
+var everyResult = every(everyArray, function(val) {
+	return val  < 4;
+});
+
+console.log(everyResult);
 
 
 
