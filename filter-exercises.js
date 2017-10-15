@@ -30,6 +30,13 @@ function find(arr, searchValue){
     }
 }
 
+// MORE ELEGANT SOLUTION
+function find(arr, searchValue){
+    return arr.filter(function(val) {
+        return val === searchValue;
+    })[0];  
+}
+
 /*
 Write a function called findInObj which accepts an array of objects, a key, and some value to search for and returns the first found value in the arrayt.
 
@@ -39,9 +46,16 @@ Examples:
 
 function findInObj(arr, key, searchValue){
     var newArr = arr.filter(function(val) {
-        return val === searchValue;
+        return val[key] === searchValue;
     });  
     return newArr[0];   
+}
+
+// MORE ELEGANT SOLUTION
+function findInObj(arr, key, searchValue){
+    return arr.filter(function(val) {
+        return val[key] === searchValue;
+    })[0];    
 }
 
 /*
@@ -55,9 +69,17 @@ Examples:
 
 function removeVowels(str){
     var vowels = 'aeiou';
-    return str.filter(function(letter) {
-        return (vowels.indexOf(letter) === -1)
-    });    
+    return str.toLowerCase().split("").filter(function(letter) {
+        return (vowels.indexOf(letter) === -1);
+    }).toString().replace(/,/g, '');    
+}
+
+// MORE ELEGANT SOLUTION
+function removeVowels(str){
+    var vowels = 'aeiou';
+    return str.toLowerCase().split("").filter(function(letter) {
+        return (vowels.indexOf(letter) === -1);
+    }).join('');    
 }
 
 /*
@@ -74,5 +96,14 @@ function doubleOddNumbers(arr){
     });    
     return oddArray.map(function(nr) {
         return nr * 2;
-    })
+    });
+}
+
+// MORE ELEGANT SOLUTION
+function doubleOddNumbers(arr){
+    return arr.filter(function(val) {
+        return !(val % 2 === 0);
+    }).map(function(nr) {
+        return nr * 2;
+    });
 }
